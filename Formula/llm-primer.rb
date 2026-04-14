@@ -1,10 +1,10 @@
 class LlmPrimer < Formula
   desc "Pre-warmed LLM CLI sessions in tmux — Claude, Aider, Ollama, etc."
   homepage "https://github.com/asakin/llm-primer"
-  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "f469f37e446ac5678e028ce9db3e5172b9164034735ffc73524398280f69597f"
+  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.5.1.tar.gz"
+  sha256 "04b7a405162f7ec2f352fb6e12df0ac328f6cf91a7f9c7c43f62d38aa20f7a67"
   license "MIT"
-  version "0.5.0"
+  version "0.5.1"
 
   depends_on "tmux"
 
