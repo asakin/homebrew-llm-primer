@@ -1,45 +1,34 @@
 class LlmPrimer < Formula
-  desc "Pre-warmed LLM CLI sessions in tmux — Claude, Aider, Ollama, etc."
+  desc "Pre-warmed pool of Claude Code sessions — skip the startup wait"
   homepage "https://github.com/asakin/llm-primer"
-  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.5.4.tar.gz"
-  sha256 "ec72762178a60ab902e37254d843c47c96f96e03cd3ebf0439ecd90e130ba3ca"
+  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.1.0.tar.gz"
+  sha256 "5b0804e8ef88ac3570a305d67af5f45bf141e7f21ac9a3d03bf1d262deb22242"
   license "MIT"
-  version "0.5.4"
+  version "0.1.0"
 
   depends_on "tmux"
 
   def install
     bin.install "bin/primer"
     bin.install "bin/primerd"
-    bin.install "bin/primer-gc"
-    bin.install "bin/primer-selftest"
   end
 
   def caveats
     <<~EOS
-      llm-primer works with any LLM CLI — set PRIMER_CLI in ~/.llm-primer/config.
-
       Quick start:
-        primerd config-template > ~/.llm-primer/config   # generate a starter config
-        primerd start                                    # start the pool daemon
-        primer attach                                    # attach to a warm session
+        primer start    # start the pool daemon
+        primer          # attach to a warm Claude Code session
 
-      Configure an alt slot (different model or tool):
-        Edit ~/.llm-primer/config, set PRIMER_ALT_CLI, then:
-        primer alt
+      Configuration (optional):
+        echo 'PRIMER_CLI=claude'      > ~/.llm-primer/config
+        echo 'PRIMER_POOL_SIZE=2'    >> ~/.llm-primer/config
 
-      Verify the install:
-        primer selftest --fast
-
-      Optional shell aliases:
-        alias cc='primer attach'
-        alias ca='primer alt'
+      See the README for full details:
+        https://github.com/asakin/llm-primer
     EOS
   end
 
   test do
-    # Runs the full tmux-free test suite: config parsing, alt slot resolution,
-    # CLI wiring, GC stray/lint, help outputs. No LLM API calls, no real pool.
-    system "#{bin}/primer-selftest", "--fast"
+    system "#{bin}/primer", "help"
   end
 end
