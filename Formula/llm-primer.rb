@@ -1,10 +1,10 @@
 class LlmPrimer < Formula
   desc "Pre-warmed pool of Claude Code sessions — skip the startup wait"
   homepage "https://github.com/asakin/llm-primer"
-  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "917925902988159169fd499fc617454565407074669b89308ca2273b36392352"
+  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.2.1.tar.gz"
+  sha256 "b8daa822be8127d7be59614b24e91008a26939bdc91db04ed974d029ab257628"
   license "MIT"
-  version "0.2.0"
+  version "0.2.1"
 
   depends_on "tmux"
 
