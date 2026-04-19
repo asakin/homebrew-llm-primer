@@ -1,16 +1,17 @@
 class LlmPrimer < Formula
   desc "Pre-warmed pool of Claude Code sessions — skip the startup wait"
   homepage "https://github.com/asakin/llm-primer"
-  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "6912cc01878f1d44c48701ad2fef54edd150d76edcd88bc143e9d91df82df65e"
+  url "https://github.com/asakin/llm-primer/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "917925902988159169fd499fc617454565407074669b89308ca2273b36392352"
   license "MIT"
-  version "0.1.1"
+  version "0.2.0"
 
   depends_on "tmux"
 
   def install
     bin.install "bin/primer"
     bin.install "bin/primerd"
+    bin.install "bin/primer-log-filter"
   end
 
   def caveats
@@ -22,6 +23,13 @@ class LlmPrimer < Formula
       Configuration (optional):
         echo 'PRIMER_CLI=claude'      > ~/.llm-primer/config
         echo 'PRIMER_POOL_SIZE=2'    >> ~/.llm-primer/config
+
+      Hold mode (v0.2) — skip warmup, hold live Claude sessions:
+        PRIMER_HOLD=1
+        PRIMER_SLOTS=claude|claude --agent writer|claude --agent engineer
+
+      Opt-in session logging (DEBUG MODE, off by default):
+        PRIMER_LOG_FILTER=primer-log-filter
 
       See the README for full details:
         https://github.com/asakin/llm-primer
